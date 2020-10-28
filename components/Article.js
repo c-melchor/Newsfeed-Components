@@ -121,40 +121,51 @@ function articleMaker(artObj){
   artDiv.classList.add('article')
 
   const header2 = document.createElement('h2')
+  header2.textContent=artObj.title
+  console.log('header2',header2)
   artDiv.appendChild(header2)
 
   const pDate = document.createElement('p')
   pDate.classList.add('date')
+  pDate.textContent=artObj.date
   artDiv.appendChild(pDate)
 
   const p = document.createElement('p')
+  p.textContent=artObj.firstParagraph
   artDiv.appendChild(p)
 
   const p2 = document.createElement('p')
+  p2.textContent=artObj.secondParagraph
   artDiv.appendChild(p2)
 
   const p3 = document.createElement('p')
+  p3.textContent=artObj.thirdParagraph
   artDiv.appendChild(p3)
 
   const span = document.createElement('span')
   span.classList.add('expandButton')
+  span.textContent='+'
   artDiv.appendChild(span)
 
   span.addEventListener('click', () => {
     artDiv.classList.toggle('article-open')
   })
 
-  artObj.forEach((item) => {
-    // let articleSpace = document.appendChild(artDiv)
-    header2.textContent=item.title
-    pDate.textContent=item.date
-    p.textContent=item.firstParagraph
-    p2.textContent=item.secondParagraph
-    p3.textContent=item.thirdParagraph
-  });
+  // data.map((item,index) => {
+  //   header2.textContent=item.title
+  //   pDate.textContent=item.date
+  //   p.textContent=item.firstParagraph
+  //   p2.textContent=item.secondParagraph
+  //   p3.textContent=item.thirdParagraph
+  // })
+
   return artDiv
   
 }
 
-console.log(articleMaker(data))
+
+data.forEach((item) => {
+  const newArticle = document.querySelector('.articles');
+  newArticle.appendChild(articleMaker(item))
+  })
 
