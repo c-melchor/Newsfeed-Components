@@ -119,25 +119,42 @@ const data = [
 function articleMaker(artObj){
   const artDiv = document.createElement('div')
   artDiv.classList.add('article')
-  console.log(artDiv)
 
-  artDiv.appendChild(header2)
-  artDiv.appendChild(pDate)
-  artDiv.appendChild(p)
-  artDiv.appendChild(p2)
-  artDiv.appendChild(span)
   const header2 = document.createElement('h2')
+  artDiv.appendChild(header2)
+
   const pDate = document.createElement('p')
   pDate.classList.add('date')
+  artDiv.appendChild(pDate)
+
   const p = document.createElement('p')
+  artDiv.appendChild(p)
+
   const p2 = document.createElement('p')
+  artDiv.appendChild(p2)
+
+  const p3 = document.createElement('p')
+  artDiv.appendChild(p3)
+
   const span = document.createElement('span')
   span.classList.add('expandButton')
+  artDiv.appendChild(span)
 
   span.addEventListener('click', () => {
     artDiv.classList.toggle('article-open')
   })
+
+  artObj.forEach((item) => {
+    // let articleSpace = document.appendChild(artDiv)
+    header2.textContent=item.title
+    pDate.textContent=item.date
+    p.textContent=item.firstParagraph
+    p2.textContent=item.secondParagraph
+    p3.textContent=item.thirdParagraph
+  });
   return artDiv
   
 }
+
+console.log(articleMaker(data))
 
